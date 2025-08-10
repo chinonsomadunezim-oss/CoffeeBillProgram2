@@ -42,6 +42,13 @@ namespace ConsoleApplication
 					isReseller = true;
 				}
 
+				//calculate tax method
+				static double CalculateTax(double amount)
+				{
+					return amount * 0.05; // 5% tax
+				}
+
+
 
 				// Compute Bill
 
@@ -68,7 +75,12 @@ namespace ConsoleApplication
 					discount = totalCost * 0.25; //updated discount for resellers
 				}
 
-				Console.WriteLine("Thank you for shopping with us!")
+				Console.WriteLine("Thank you for shopping with us!");
+
+				double tax = CalculateTax(totalCost - discount);
+				Console.WriteLine("Tax: {0:C}", tax);
+				Console.WriteLine("Final Amount Payable: {0:C}", (totalCost - discount) + tax);
+
 
 				// Print Bill
 				Console.WriteLine();
